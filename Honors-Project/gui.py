@@ -153,15 +153,4 @@ class MetaArea(QTableWidget):
             self.setItem(self.rowCount() - 1, 1, QTableWidgetItem(meta[item]))
 
 
-def except_hook(cls, exception, traceback):
-    sys.__excepthook__(cls, exception, traceback)
-
-
-if __name__ == '__main__':
-    sys.excepthook = except_hook
-    app = QApplication([])
-    unveil = UnveilGUI()
-    sys.exit(app.exec_())
-
-
 

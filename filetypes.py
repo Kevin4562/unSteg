@@ -61,7 +61,7 @@ class TypeImage(FileType):
             if im._getexif():
                 meta.update({TAGS.get(k): str(v) for k, v in im._getexif().items()})
             return meta
-        except Exception as e:
+        except:
             return False
 
 

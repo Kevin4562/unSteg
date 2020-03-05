@@ -1,0 +1,5 @@
+PyQt5
+Pillow
+PyPDF2
+python-docx
+pyexcel

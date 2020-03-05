@@ -1,2 +1,2 @@
 include Honors-Project/resources/*
-include Honors-Project/temp
+include Honors-Project/temp/*

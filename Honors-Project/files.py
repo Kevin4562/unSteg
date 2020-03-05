@@ -6,7 +6,6 @@ import zipfile
 import mailparser
 import base64
 import os
-import time
 
 
 class RecoveredFile:

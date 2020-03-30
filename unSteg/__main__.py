@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 from gui import UnveilGUI
 from recovered_file import *
 import hashlib
@@ -100,5 +101,6 @@ def except_hook(cls, exception, traceback):
 if __name__ == '__main__':
     sys.excepthook = except_hook
     app = QApplication([])
+    app.setWindowIcon(QIcon('resources/icon.png'))
     unveil = UnveilGUI()
     sys.exit(app.exec_())

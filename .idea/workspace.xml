@@ -28,18 +28,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unSteg/unSteg/__main__.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unSteg/unSteg/resources" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Digital Forensics Honors Project\unSteg\unSteg\resources" />
+      <recent name="E:\Digital Forensics Honors Project\resources" />
+      <recent name="E:\Digital Forensics Honors Project" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Digital Forensics Honors Project\testing\exif" />
       <recent name="E:\Digital Forensics Honors Project\testing" />
       <recent name="E:\Digital Forensics Honors Project\Kaitai" />
-      <recent name="E:\Digital Forensics Honors Project\resources" />
-      <recent name="E:\Digital Forensics Honors Project" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Digital Forensics Honors Project\resources" />
       <recent name="E:\Digital Forensics Honors Project" />
     </key>
@@ -306,7 +307,7 @@
       <workItem from="1583291894376" duration="14719000" />
       <workItem from="1583358717919" duration="20634000" />
       <workItem from="1583383142370" duration="9353000" />
-      <workItem from="1585519835081" duration="15822000" />
+      <workItem from="1585519835081" duration="18068000" />
     </task>
     <servers />
   </component>
@@ -343,29 +344,29 @@
     </state>
     <state x="815" y="300" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585520160274" />
     <state x="2735" y="300" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558641840" />
-    <state width="1877" height="331" key="GridCell.Tab.0.bottom" timestamp="1585559852307">
+    <state width="1877" height="331" key="GridCell.Tab.0.bottom" timestamp="1585608290784">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1342" height="259" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1583036570594" />
-    <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585559852307" />
+    <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585608290784" />
     <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558663727" />
-    <state width="1877" height="331" key="GridCell.Tab.0.center" timestamp="1585559852307">
+    <state width="1877" height="331" key="GridCell.Tab.0.center" timestamp="1585608290784">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1342" height="259" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1583036570594" />
-    <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585559852307" />
+    <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585608290784" />
     <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558663727" />
-    <state width="1877" height="331" key="GridCell.Tab.0.left" timestamp="1585559852307">
+    <state width="1877" height="331" key="GridCell.Tab.0.left" timestamp="1585608290784">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1342" height="259" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1583036570594" />
-    <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585559852307" />
+    <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585608290784" />
     <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558663727" />
-    <state width="1877" height="331" key="GridCell.Tab.0.right" timestamp="1585559852307">
+    <state width="1877" height="331" key="GridCell.Tab.0.right" timestamp="1585608290784">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1342" height="259" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1583036570594" />
-    <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585559852307" />
+    <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585608290784" />
     <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558663727" />
     <state width="1860" height="300" key="GridCell.Tab.1.bottom" timestamp="1583344931511">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -407,6 +408,6 @@
     <SUITE FILE_PATH="coverage/Digital_Forensics_Honors_Project$bruteforce.coverage" NAME="bruteforce Coverage Results" MODIFIED="1581969568329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Digital_Forensics_Honors_Project$mimetypes.coverage" NAME="strip Coverage Results" MODIFIED="1582064677569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Digital_Forensics_Honors_Project$testing.coverage" NAME="testing Coverage Results" MODIFIED="1583292936054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Digital_Forensics_Honors_Project$main.coverage" NAME="__main__ Coverage Results" MODIFIED="1585559852290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../unSteg/unSteg" />
+    <SUITE FILE_PATH="coverage/Digital_Forensics_Honors_Project$main.coverage" NAME="__main__ Coverage Results" MODIFIED="1585608290775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../unSteg/unSteg" />
   </component>
 </project>

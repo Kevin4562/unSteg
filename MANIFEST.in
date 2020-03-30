@@ -1,2 +1,1 @@
-include Honors-Project/resources/*
-include Honors-Project/temp/*
+include unSteg\resources\*

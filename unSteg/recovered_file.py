@@ -88,6 +88,8 @@ class RecoveredFile:
         return self.real_type.icon
 
     def export_file(self):
+        if not os.path.exists('temp/'):
+            os.makedirs('temp/')
         save_location = 'temp/' + self.__str__()
         if save_location.endswith('.unkwn'):
             save_location = save_location.replace('.unkwn', '.txt')

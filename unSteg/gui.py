@@ -11,7 +11,7 @@ class UnveilGUI(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.scanner = __main__.Scanner()
-        self.setWindowTitle("Digital Forensics - GUI")
+        self.setWindowTitle("unSteg - GUI")
         self.setGeometry(0, 0, 1280, 840)
         self.setAcceptDrops(True)
         self.main_view = QWidget()
@@ -110,7 +110,7 @@ class MainArea(QListWidget):
         self.setSortingEnabled(True)
         self.setUniformItemSizes(True)
         self.setIconSize(QSize(50, 50))
-        self.itemDoubleClicked.connect(self.save_file)
+        self.itemDoubleClicked.connect(self.open_file)
 
     def toggle_hide_unknown(self):
         self.hide_unknown = False if self.hide_unknown else True
@@ -127,7 +127,7 @@ class MainArea(QListWidget):
     def refresh_list(self):
         pass
 
-    def save_file(self, event):
+    def open_file(self, event):
         file_location = event.data(Qt.UserRole)[0].export_file()
         if platform.system() == 'Darwin':  # macOS
             os.system("open " + file_location)

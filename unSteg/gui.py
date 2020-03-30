@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 import sys
-import main
+import __main__
 import os
 import platform
 
@@ -10,13 +10,14 @@ import platform
 class UnveilGUI(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.scanner = main.Scanner()
+        self.scanner = __main__.Scanner()
         self.setWindowTitle("Digital Forensics - GUI")
         self.setGeometry(0, 0, 1280, 840)
         self.setAcceptDrops(True)
         self.main_view = QWidget()
         self.layout = QHBoxLayout()
         self.ascii_area = QPlainTextEdit()
+        self.ascii_area.setWordWrapMode(3)
         self.meta_view = MetaArea()
         self.main_area = MainArea(self.meta_view)
         self.setup()
@@ -24,8 +25,8 @@ class UnveilGUI(QMainWindow):
         self.message_handler()
 
     def message_handler(self):
-        while main.results.qsize() > 0:
-            message = main.results.get()
+        while __main__.results.qsize() > 0:
+            message = __main__.results.get()
             if 'meta' in message:
                 meta = message['meta']
                 self.meta_view.view_meta(meta)
@@ -33,8 +34,7 @@ class UnveilGUI(QMainWindow):
                 file = message['file']
                 self.main_area.add_file(file)
             elif 'ascii' in message:
-                ascii = message['ascii']
-                self.ascii_area.setPlainText(ascii)
+                self.ascii_area.setPlainText(message['ascii'])
         QTimer.singleShot(200, self.message_handler)
 
     def setup(self):
@@ -45,14 +45,16 @@ class UnveilGUI(QMainWindow):
         file_menu = self.menuBar().addMenu('&File')
         file_menu.addAction(exit_action)
 
+        '''
         search = QAction('&Search', self)
         search.setShortcut('Ctrl+F')
         search.setStatusTip('Search File Contents')
         search_menu = self.menuBar().addMenu('&Search')
         search_menu.addAction(search)
+        '''
 
         file_types = self.menuBar().addMenu('&File Types')
-        for file_type in main.file_types:
+        for file_type in __main__.file_types:
             options = QAction(file_type.extension, self)
             options.setCheckable(True)
             options.triggered.connect(file_type.toggle_enabled)
@@ -96,7 +98,7 @@ class UnveilGUI(QMainWindow):
             self.main_area.clear()
             self.ascii_area.clear()
             print(filename)
-            main.investigation.put(filename)
+            __main__.investigation.put(filename)
 
 
 class MainArea(QListWidget):

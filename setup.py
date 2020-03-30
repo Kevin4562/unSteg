@@ -1,15 +1,16 @@
 from distutils.core import setup
 setup(
-  name='Digital-Forensics-Honors-Project',         # How you named your package folder (MyLib)
-  packages=['Honors-Project'],
-  include_package_data=True,
-  version='0.9',      # Start with a small number and increase it with every change you make
+  name='unSteg',         # How you named your package folder (MyLib)
+  packages=['unSteg'],
+  package_data={"unSteg": ["resources/*.png", "*.png", "unSteg/resources/*.png"],
+                '': ["*.png", "resources/*.png", "unSteg/resources/*.png"]},
+  version='1.3',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description='Project for finding hidden files and fixing file headers.',  # Give a short description
   author='Kevin',                   # Type in your name
-  author_email='your.email@domain.com',      # Type in your E-Mail
+  author_email='email@domain.com',      # Type in your E-Mail
   url='https://github.com/Kevin4562',   # Provide either the link to your github or to your website
-  download_url='https://github.com/Kevin4562/Digital-Forensics-Honors-Project/archive/v_08.tar.gz',    # I explain this later on
+  download_url='https://github.com/Kevin4562/Digital-Forensics-Honors-Project/archive/v_09.tar.gz',    # I explain this later on
   keywords=['File Headers', 'Magic Numbers', 'steganography'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'Pillow',

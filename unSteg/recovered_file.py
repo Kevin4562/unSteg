@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QPixmap
 from filetypes import *
 from io import BytesIO
-import main
+import __main__
 import zipfile
 import mailparser
 import base64
@@ -19,7 +19,7 @@ class RecoveredFile:
         self.real_type = TypeUnknown()
         self.prefix = b''
 
-        if self.start == 0:
+        if self.start <= 25:
             self.main = True
 
         try:
@@ -30,7 +30,7 @@ class RecoveredFile:
                 self.real_type = self.predicted_type
                 self.meta = valid
             else:
-                for file_type in main.file_types:
+                for file_type in __main__.file_types:
                     if file_type.enabled and not file_type.plaintext:
                         signature = file_type.signatures[0]
                         valid = file_type.check_validity(signature + file[self.start+(len(signature)):])
@@ -53,12 +53,12 @@ class RecoveredFile:
         return basic_meta
 
     def is_unknown(self):
-        if type(self.real_type) == TypeUnknown and not self.file_name:
+        if type(self.real_type) == TypeUnknown and not self.main:
             return True
 
     def __str__(self):
         if self.file_name:
-            return f'{self.file_name.split(".")[0]}{self.real_type}'
+            return f'{self.file_name.split(".")[0]}{"" if self.main else f"-{self.start}"}{self.real_type}'
         return f'{self.start}{self.real_type}'
 
     def get_data(self):
@@ -70,19 +70,13 @@ class RecoveredFile:
             contents = zipfile.ZipFile(BytesIO(self.get_data()))
             for zipped_file in contents.filelist:
                 file_name = os.path.basename(zipped_file.filename)
-                new_files = main.scan_file(contents.read(zipped_file))
-                for file in new_files:
-                    if file.start == 0:
-                        file.file_name = file_name
+                new_files = __main__.scan_file(contents.read(zipped_file), file_name)
                 files.extend(new_files)
         if self.real_type.is_email:
             contents = mailparser.parse_from_bytes(self.get_data())
             for attached_file in contents.attachments:
                 decrypted_file = base64.b64decode(attached_file['payload'])
-                new_files = main.scan_file(decrypted_file)
-                for file in new_files:
-                    if file.start == 0:
-                        file.file_name = attached_file['filename']
+                new_files = __main__.scan_file(decrypted_file, attached_file['filename'])
                 files.extend(new_files)
         return files
 

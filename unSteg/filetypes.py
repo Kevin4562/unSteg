@@ -10,6 +10,7 @@ from mutagen.mp3 import MP3
 from mutagen.mp4 import MP4
 import mailparser
 import time
+import pefile
 import zipfile
 
 
@@ -58,7 +59,7 @@ class TypeImage(FileType):
             meta = {
                 'Verified Type': self.extension,
             }
-            if im._getexif():
+            if 'exif' in im.info or 'parsed_exif' in im.info:
                 meta.update({TAGS.get(k): str(v) for k, v in im._getexif().items()})
             return meta
         except:
@@ -295,5 +296,28 @@ class TypeEML(FileType):
                     'Timezone': str(email.timezone),
                 }
         except Exception as e:
-            print(e)
             return False
+
+
+class TypeEXE(FileType):
+    def __init__(self):
+        super().__init__()
+        self.signatures = [
+            b'\x4D\x5A',
+        ]
+        self.enabled = False
+        self.icon = 'resources/exe.png'
+        self.extension = '.exe'
+
+    def check_validity(self, file):
+        try:
+            pe = pefile.PE(data=file)
+            return {
+                'Verified Type': self.extension,
+                'Sections': pe.FILE_HEADER.NumberOfSections,
+                'Entry Point': pe.OPTIONAL_HEADER.AddressOfEntryPoint,
+                'Image Base': pe.OPTIONAL_HEADER.ImageBase,
+            }
+        except Exception as e:
+            return False
+

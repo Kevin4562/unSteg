@@ -1,2 +1,2 @@
-# Digital-Forensics-Honors-Project
+# unSteg
  Project for finding hidden files and fixing file headers.

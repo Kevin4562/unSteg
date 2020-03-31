@@ -28,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unSteg/unSteg/resources" />
+    <property name="last_opened_file_path" value="E:/IoT Project/ELF Smart Plug/eques_exploit.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -307,7 +307,7 @@
       <workItem from="1583291894376" duration="14719000" />
       <workItem from="1583358717919" duration="20634000" />
       <workItem from="1583383142370" duration="9353000" />
-      <workItem from="1585519835081" duration="18068000" />
+      <workItem from="1585519835081" duration="19605000" />
     </task>
     <servers />
   </component>
@@ -339,11 +339,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585549660022" />
-    <state x="2735" y="300" key="FileChooserDialogImpl" timestamp="1585558641840">
+    <state x="2735" y="300" key="FileChooserDialogImpl" timestamp="1585613047562">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="815" y="300" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1585520160274" />
-    <state x="2735" y="300" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585558641840" />
+    <state x="2735" y="300" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1585613047562" />
     <state width="1877" height="331" key="GridCell.Tab.0.bottom" timestamp="1585608290784">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

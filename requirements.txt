@@ -1,0 +1,8 @@
+Pillow
+PyQT5
+mutagen
+pdfrw
+pyexcel-xlsx
+mail-parser
+python-docx
+pefile

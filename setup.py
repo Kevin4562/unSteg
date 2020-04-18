@@ -21,6 +21,7 @@ setup(
           'mail-parser',
           'python-docx',
           'pefile',
+          'python-pptx',
   ],
   classifiers=[
     'Development Status :: 3 - Alpha',

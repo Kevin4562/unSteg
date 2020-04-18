@@ -6,3 +6,4 @@ pyexcel-xlsx
 mail-parser
 python-docx
 pefile
+python-pptx

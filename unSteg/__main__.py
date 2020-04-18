@@ -1,16 +1,15 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from gui import UnveilGUI
+from gui import unStegGUI
 from recovered_file import *
 import hashlib
 import re
 import os
 from queue import Queue
 from threading import Thread
+import time
 
-
-investigation = Queue()
 results = Queue()
 
 file_types = [
@@ -26,6 +25,7 @@ file_types = [
     # Microsoft
     TypeDOCX(),
     TypeXLSX(),
+    TypePPTX(),
     # Email
     TypeEML(),
     # Other
@@ -36,25 +36,24 @@ file_types = [
 ]
 
 
-def scan_file(file, file_name=None):
-
+def scan_file(file, file_name=None, parent=None):
     files = []
     found = []
 
     for file_type in file_types:
         if file_type.enabled:
             for match in re.finditer(b'|'.join(file_type.signatures), file):
-                if match.start() not in found:
-                    print(match.start(), file_type)
-                    files.extend(RecoveredFile(file, match.start(), file_type, file_name).get_contents())
+                start = match.start()
+                if start not in found:
+                    files.extend(RecoveredFile(file, match.start(), file_type, file_name, parent).get_contents())
                     found.append(match.start())
 
-    for file in files:
-        if file.main and not file.file_name:
-            file.file_name = file_name
+    for found_file in files:
+        if found_file.main and not found_file.file_name:
+            found_file.file_name = file_name
 
     if len([file for file in files if file.main]) == 0:
-        files.append(RecoveredFile(file, 0, TypeUnknown(), file_name))
+        files.append(RecoveredFile(file, 0, TypeUnknown(), file_name, parent))
 
     return files
 
@@ -72,26 +71,11 @@ def start_scan(filepath):
             'SHA1': hashlib.sha1(file).hexdigest(),
             'File Size': f'{file_size} bytes'
         }
+        print(meta)
         results.put({'meta': meta})
-        # ascii = re.sub(r'[^A-Za-z0-9:()_-]+', '.', file.decode('IBM437', errors="replace"))
-        results.put({'ascii': file.decode('IBM437', errors="ignore")})
-        return scan_file(file, file_name)
-
-
-class Scanner(Thread):
-    def __init__(self):
-        Thread.__init__(self)
-        self.daemon = True
-        self.start()
-
-    def run(self):
-        while True:
-            try:
-                if investigation.qsize() > 0:
-                    for file in start_scan(investigation.get()):
-                        results.put({'file': file})
-            except Exception as e:
-                print(e)
+        results.put({'ascii': re.sub(r'[^\nA-Za-z0-9:()_-]', '.', file.decode('IBM437', errors="replace"))})
+        results.put({'progress': 1})
+        results.put({'file': scan_file(file, file_name)})
 
 
 def except_hook(cls, exception, traceback):
@@ -102,5 +86,5 @@ if __name__ == '__main__':
     sys.excepthook = except_hook
     app = QApplication([])
     app.setWindowIcon(QIcon('resources/icon.png'))
-    unveil = UnveilGUI()
+    unsteg = unStegGUI()
     sys.exit(app.exec_())

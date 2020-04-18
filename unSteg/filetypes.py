@@ -12,6 +12,7 @@ import mailparser
 import time
 import pefile
 import zipfile
+from pptx import Presentation
 
 
 class FileType(ABC):
@@ -62,7 +63,7 @@ class TypeImage(FileType):
             if 'exif' in im.info or 'parsed_exif' in im.info:
                 meta.update({TAGS.get(k): str(v) for k, v in im._getexif().items()})
             return meta
-        except:
+        except Exception as e:
             return False
 
 
@@ -223,6 +224,26 @@ class TypeXLSX(FileType):
             return False
 
 
+class TypePPTX(FileType):
+    def __init__(self):
+        super().__init__()
+        self.signatures = [
+            b'\x50\x4B\x03\x04', b'\x50\x4B\x03\x04\x14\x00\x06\x00'
+        ]
+        self.is_archive = True
+        self.icon = 'resources/pptx.png'
+        self.extension = '.pptx'
+
+    def check_validity(self, file):
+        try:
+            pptx = Presentation(BytesIO(file))
+            return {
+                'Verified Type': self.extension,
+            }
+        except Exception as e:
+            return False
+
+
 class TypeXML(FileType):
     def __init__(self):
         super().__init__()
@@ -247,6 +268,7 @@ class TypeXML(FileType):
 class TypeZIP(FileType):
     def __init__(self):
         super().__init__()
+        print('init zip')
         self.signatures = [
             b'\x50\x4B\x03\x04', b'\x50\x4B\x4C\x49\x54\x45', b'\x50\x4B\x05\x06',
             b'\x50\x4B\x07\x08', b'\x57\x69\x6E\x5A\x69\x70'
@@ -268,7 +290,12 @@ class TypeZIP(FileType):
                     'Comment': f'{zip_file.comment}',
                     'Mode': f'{zip_file.mode}'
                 }
-        except:
+        except Exception as e:
+            if 'is encrypted, password required' in str(e):
+                return {
+                    'Verified Type': self.extension,
+                    'Encryption': 'Password Protected'
+                }
             return False
 
 
@@ -277,6 +304,7 @@ class TypeEML(FileType):
         super().__init__()
         self.signatures = [
             b'\x44\x65\x6C\x69\x76\x65\x72\x65\x64\x2D\x54\x6F\x3A\x20',
+            b'\x4D\x49\x4D\x45\x2D\x56\x65\x72\x73\x69\x6F\x6E\x3A\x20\x31\x2E\x30\x0D\x0A\x44\x61\x74\x65\x3A'
         ]
         self.is_email = True
         self.plaintext = True
@@ -288,11 +316,13 @@ class TypeEML(FileType):
                 email = mailparser.parse_from_bytes(file)
                 return {
                     'Verified Type': self.extension,
+                    'Subject': str(email.subject),
+                    'Delivered To': str(email.to if email.to else email.delievered_to),
+                    'From': str(email.from_),
                     'Attachments': ', '.join([f['filename'] for f in email.attachments]),
-                    'Date': str(email.date),
-                    'Body': str(email.body),
-                    'Received': str(email.received),
+                    'Body': str(email.text_plain if email.text_plain else email.body),
                     'Headers': str(email.headers),
+                    'Date': str(email.received if email.received else email.date),
                     'Timezone': str(email.timezone),
                 }
         except Exception as e:

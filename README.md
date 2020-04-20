@@ -1,5 +1,7 @@
 # unSteg
 GUI application for finding hidden files and fixing file headers.
+
+
 <img src="https://i.imgur.com/ItkqyjB.png">
 
 ### Installation
@@ -22,15 +24,16 @@ $ cd unSteg
 $ python3 -m pip install -r requirements.txt
 ```
 
-### Usage
+### Open GUI
 ```bash
 # inside the project directory
 $ python3 unsteg
-# (or open unsteg/__main__.py)
+or 
+open the unsteg/__main__.py file
 ```
 
 
-####Features
+### Features
 * Extract hidden embedded files.
 * Extract attachments from emails.
 * Extract files from ZIP archives.

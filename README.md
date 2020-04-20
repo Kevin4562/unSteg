@@ -1,5 +1,6 @@
 # unSteg
- Project for finding hidden files and fixing file headers.
+GUI application for finding hidden files and fixing file headers.
+<img src="https://i.imgur.com/ItkqyjB.png">
 
 ### Installation
 
@@ -9,6 +10,8 @@ NOTE: Requires Python 3.7+
 ```bash
 # clone the repo
 $ git clone https://github.com/Kevin4562/unSteg.git
+# or download and unzip the project zip
+https://github.com/Kevin4562/unSteg/archive/master.zip
 
 # change the working directory to unSteg
 $ cd unSteg
@@ -19,8 +22,22 @@ $ cd unSteg
 $ python3 -m pip install -r requirements.txt
 ```
 
-*Option 2:
+### Usage
 ```bash
-python3 -m pip install unSteg
-
+# inside the project directory
+$ python3 unsteg
+# (or open unsteg/__main__.py)
 ```
+
+
+####Features
+* Extract hidden embedded files.
+* Extract attachments from emails.
+* Extract files from ZIP archives.
+* Detect and repair file signatures.
+* View and search ASCII of file data.
+* View Exif data of image files.
+* View Metadata of many file types.
+
+
+

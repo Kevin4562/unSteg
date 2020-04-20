@@ -268,7 +268,6 @@ class TypeXML(FileType):
 class TypeZIP(FileType):
     def __init__(self):
         super().__init__()
-        print('init zip')
         self.signatures = [
             b'\x50\x4B\x03\x04', b'\x50\x4B\x4C\x49\x54\x45', b'\x50\x4B\x05\x06',
             b'\x50\x4B\x07\x08', b'\x57\x69\x6E\x5A\x69\x70'

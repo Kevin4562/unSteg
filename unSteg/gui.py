@@ -187,7 +187,8 @@ class unStegGUI(QMainWindow):
 
     def dropEvent(self, event):
         event.accept()
-        self.scan_file(event.mimeData().urls()[0].toLocalFile())
+        if len(event.mimeData().urls()) > 0:
+            self.scan_file(event.mimeData().urls()[0].toLocalFile())
 
     def toggle_hide_unknown(self):
         self.hide_unknown = False if self.hide_unknown else True

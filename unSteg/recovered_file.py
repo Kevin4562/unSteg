@@ -65,6 +65,8 @@ class RecoveredFile:
 
     def get_data(self):
         signature = self.real_type.signatures[0]
+        if self.real_type == self.predicted_type:
+            return self.file
         return signature + self.file[self.start + len(signature):]
 
     def get_contents(self):

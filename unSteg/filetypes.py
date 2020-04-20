@@ -13,17 +13,19 @@ import time
 import pefile
 import zipfile
 from pptx import Presentation
+import os
 
 
 class FileType(ABC):
     def __init__(self):
+        self.dir = os.path.dirname(os.path.abspath(__file__))
         self.is_archive = False
         self.is_email = False
         self.enabled = True
         self.plaintext = False
         self.image = False
         self.extension = 'unknown'
-        self.icon = 'resources/unknown.png'
+        self.icon = f'{self.dir}/resources/unknown.png'
 
     @abstractmethod
     def check_validity(self, file):
@@ -111,7 +113,7 @@ class TypeMP3(FileType):
         self.signatures = [
             b'\x49\x44\x33'
         ]
-        self.icon = 'resources/mp3.png'
+        self.icon = f'{self.dir}/resources/mp3.png'
         self.extension = '.mp3'
 
     def check_validity(self, file):
@@ -135,7 +137,7 @@ class TypeMP4(FileType):
         self.signatures = [
             b'\x00\x00\x00\x18\x66\x74\x79\x70'
         ]
-        self.icon = 'resources/mp4.png'
+        self.icon = f'{self.dir}/resources/mp4.png'
         self.extension = '.mp4'
 
     def check_validity(self, file):
@@ -158,7 +160,7 @@ class TypePDF(FileType):
         self.signatures = [
             b'\x25\x50\x44\x46'
         ]
-        self.icon = 'resources/pdf.png'
+        self.icon = f'{self.dir}/resources/pdf.png'
         self.extension = '.pdf'
 
     def check_validity(self, file):
@@ -182,7 +184,7 @@ class TypeDOCX(FileType):
             b'\x50\x4B\x03\x04', b'\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1'
         ]
         self.is_archive = True
-        self.icon = 'resources/doc.png'
+        self.icon = f'{self.dir}/resources/doc.png'
         self.extension = '.docx'
 
     def check_validity(self, file):
@@ -210,7 +212,7 @@ class TypeXLSX(FileType):
             b'\x50\x4B\x03\x04'
         ]
         self.is_archive = True
-        self.icon = 'resources/xlsx.png'
+        self.icon = f'{self.dir}/resources/xlsx.png'
         self.extension = '.xlsx'
 
     def check_validity(self, file):
@@ -231,7 +233,7 @@ class TypePPTX(FileType):
             b'\x50\x4B\x03\x04', b'\x50\x4B\x03\x04\x14\x00\x06\x00'
         ]
         self.is_archive = True
-        self.icon = 'resources/pptx.png'
+        self.icon = f'{self.dir}/resources/pptx.png'
         self.extension = '.pptx'
 
     def check_validity(self, file):
@@ -251,7 +253,7 @@ class TypeXML(FileType):
             b'\x3C\x3F\x78\x6D\x6C\x20\x76\x65\x72\x73\x69\x6F\x6E\x3D\x22\x31\x2E\x30\x22',
             br'\x3C\x3F\x78\x6D\x6C\x20\x76\x65\x72\x73\x69\x6F\x6E\x3D\x22\x31\x2E\x30\x22'
         ]
-        self.icon = 'resources/xml.png'
+        self.icon = f'{self.dir}/resources/xml.png'
         self.plaintext = True
         self.extension = '.xml'
 
@@ -273,7 +275,7 @@ class TypeZIP(FileType):
             b'\x50\x4B\x07\x08', b'\x57\x69\x6E\x5A\x69\x70'
         ]
         self.is_archive = True
-        self.icon = 'resources/zip.png'
+        self.icon = f'{self.dir}/resources/zip.png'
         self.extension = '.zip'
 
     def check_validity(self, file):
@@ -307,7 +309,7 @@ class TypeEML(FileType):
         ]
         self.is_email = True
         self.plaintext = True
-        self.icon = 'resources/eml.png'
+        self.icon = f'{self.dir}/resources/eml.png'
         self.extension = '.eml'
 
     def check_validity(self, file):
@@ -335,7 +337,7 @@ class TypeEXE(FileType):
             b'\x4D\x5A',
         ]
         self.enabled = False
-        self.icon = 'resources/exe.png'
+        self.icon = f'{self.dir}/resources/exe.png'
         self.extension = '.exe'
 
     def check_validity(self, file):

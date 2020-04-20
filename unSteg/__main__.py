@@ -83,8 +83,9 @@ def except_hook(cls, exception, traceback):
 
 
 if __name__ == '__main__':
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
     sys.excepthook = except_hook
     app = QApplication([])
-    app.setWindowIcon(QIcon('resources/icon.png'))
+    app.setWindowIcon(QIcon(f'{cur_dir}/resources/icon.png'))
     unsteg = unStegGUI()
     sys.exit(app.exec_())

@@ -12,8 +12,7 @@ NOTE: Requires Python 3.7+
 ```bash
 # clone the repo
 $ git clone https://github.com/Kevin4562/unSteg.git
-# or download and unzip the project zip
-https://github.com/Kevin4562/unSteg/archive/master.zip
+# or directly download and unzip the project zip: https://github.com/Kevin4562/unSteg/archive/master.zip
 
 # change the working directory to unSteg
 $ cd unSteg
